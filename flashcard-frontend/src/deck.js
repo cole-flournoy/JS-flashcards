@@ -5,7 +5,11 @@ function fetchDecks(){
 }
 
 function appendDecks(decks){
+  const deckDiv = document.getElementById('indexContainer')
+  deckDiv.innerText = "All My Decks!"
   for (let deck of decks){
-    console.log(deck)
+    const li = document.createElement('li')
+    li.innerText = `${deck.name} (${deck.group.name})`
+    deckDiv.append(li)
   }
 }

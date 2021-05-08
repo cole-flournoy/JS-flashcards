@@ -4,8 +4,13 @@ function fetchGroups(){
   .then(appendGroups)
 }
 
+
 function appendGroups(groups){
+  const groupDiv = document.getElementById('indexContainer')
+  groupDiv.innerText = "All My Groups!"
   for (let group of groups){
-    console.log(group)
+    const li = document.createElement('li')
+    li.innerText = group.name
+    groupDiv.append(li)
   }
 }
