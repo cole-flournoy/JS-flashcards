@@ -5,6 +5,8 @@ function fetchDecks(){
 }
 
 function appendDecks(decks){
+  const detailDiv = document.getElementById('detailContainer')
+  detailDiv.innerText = ''
   const deckDiv = document.getElementById('indexContainer')
   deckDiv.innerText = "All My Decks!"
   for (let deck of decks){
