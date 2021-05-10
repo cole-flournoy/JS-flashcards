@@ -32,11 +32,33 @@ class Card {
       <form id="editCard">
         <input id="front" type="text" value="${this.front}">
         <input id="back" type="text" value="${this.back}">
-        <input id="cardId" type="hidden" value=${this.id}>
         <input type="submit" value="Submit">
       </form>
     ` 
     formDiv.innerHTML = form
+    formDiv.children[0].addEventListener('submit', this.editCard.bind(this))
+  }
+
+  editCard(e){
+    e.preventDefault()
+    const cardFront = document.getElementById('front').value
+    const cardBack = document.getElementById('back').value
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({card: {front: cardFront, back: cardBack}})
+    }
+    fetch(`http://localhost:3000/cards/${this.id}`, options)
+    .then(resp => resp.json())
+    .then(updatedCard => {
+      let existingCard = Card.all.find(card => card.id === updatedCard.id)
+      existingCard.front = updatedCard.front
+      existingCard.back = updatedCard.back
+      existingCard.deck.showDetail()
+    })
   }
 }
 
