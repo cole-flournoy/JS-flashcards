@@ -28,7 +28,6 @@ class Deck {
       li.innerText = `${deck.name} (${deck.group.name})`
       deckDiv.append(li)
     }
-    Deck.newForm(deckDiv)
   }
 
   static newForm(div, group){
