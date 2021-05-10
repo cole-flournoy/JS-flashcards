@@ -1,9 +1,12 @@
 class Deck {
+  static all = []
+  
   constructor(deck){
     this.id = deck.id
     this.name = deck.name
     this.group = deck.group
     this.cards = deck.cards
+    Deck.all.push(this)
   }
 
   static fetchDecks(){
