@@ -8,7 +8,12 @@ class Group {
   static fetchGroups(){
     fetch("http://localhost:3000/groups")
     .then(resp => resp.json())
-    .then(Group.appendGroups)
+    .then(groups => {
+      for (let group of groups){
+        let newGroup = new Group(group)
+      }
+      Group.appendGroups
+    })
   }
 
   static appendGroups(groups){
@@ -58,15 +63,10 @@ class Group {
     fetch("http://localhost:3000/groups", options)
     .then(resp => resp.json())
     .then(Group.fetchGroups)
-  
+    // instantiate new group
     e.target.parentElement.reset()
   }
 }
-
-
-
-
-
 
 
 // function fetchGroup(e){
