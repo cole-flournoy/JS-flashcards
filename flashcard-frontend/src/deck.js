@@ -72,10 +72,14 @@ class Deck {
       button.innerText = "Edit"
       li.innerText = `Front: ${card.front} - Back: ${card.back} `
       li.append(button)
-      // debugger
-      button.addEventListener('click', () => Card.renderEditForm(deckDiv, card))
+
+      button.addEventListener('click', () => card.renderEditForm(deckDiv))
       deckDiv.append(li)
     }
+    const formDiv = document.createElement('div')
+    formDiv.setAttribute('id', 'formDiv')
+    deckDiv.append(formDiv)
+    
     // render new card form
   }
 }

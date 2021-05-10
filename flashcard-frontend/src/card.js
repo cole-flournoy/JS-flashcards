@@ -26,16 +26,17 @@ class Card {
     }
   }
 
-  static renderEditForm(div, card){
+  renderEditForm(div){
+    const formDiv = document.getElementById('formDiv')
     const form = `
       <form id="editCard">
-        <input id="front" type="text" value="${card.front}">
-        <input id="back" type="text" value="${card.back}">
-        <input id="cardId" type="hidden" value=${card.id}>
+        <input id="front" type="text" value="${this.front}">
+        <input id="back" type="text" value="${this.back}">
+        <input id="cardId" type="hidden" value=${this.id}>
         <input type="submit" value="Submit">
       </form>
     ` 
-    div.innerHTML += form 
+    formDiv.innerHTML = form
   }
 }
 
