@@ -9,19 +9,6 @@ class Deck {
     this.cards = deck.cards.map(card => new Card(card))
   }
 
-  // static fetchDecks(){
-  //   fetch("http://localhost:3000/decks")
-  //   .then(resp => resp.json())
-  //   .then(decks => {
-  //     for (let deck of decks){
-  //       let newDeck = new Deck(deck)
-  //       // newDeck.appendDeck()
-  //     }
-  //   })
-  //   // const deckDiv = document.getElementById('indexContainer')
-  //   // deckDiv.innerText = "All My Decks!"
-  // }
-
   appendDeck(){
     const deckDiv = document.getElementById('indexContainer')
     const li = document.createElement('li')

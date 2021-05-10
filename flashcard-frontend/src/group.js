@@ -13,13 +13,9 @@ class Group {
     .then(resp => resp.json())
     .then(groups => {
       for (let group of groups){
-        let newGroup = new Group(group)
-        newGroup.appendGroup()
+        new Group(group)
       }
     })
-    const groupDiv = document.getElementById('indexContainer')
-    groupDiv.innerText = "All My Groups!"
-    Group.newForm(groupDiv)
   }
 
   static appendGroups(){
@@ -28,6 +24,7 @@ class Group {
     for (let group of Group.all){
       group.appendGroup()
     }
+    Group.newForm(groupDiv)
   }
 
   appendGroup(){
