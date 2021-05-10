@@ -80,8 +80,6 @@ class Deck {
     formDiv.setAttribute('id', 'formDiv')
     deckDiv.append(formDiv)
     Card.renderCreateForm(this)
-
-    // render new card form
   }
 }
 

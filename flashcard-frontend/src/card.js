@@ -72,10 +72,34 @@ class Card {
       </form>
     ` 
     formDiv.innerHTML = form
-    
-    // formDiv.children[0].addEventListener('submit', this.editCard.bind(this))
+    formDiv.children[0].addEventListener('submit', this.createCard.bind(this))
 
   }
+
+  static createCard(e){
+    e.preventDefault()
+    const cardFront = document.getElementById('front').value
+    const cardBack = document.getElementById('back').value
+    const cardDeck = parseInt(document.getElementById('deck').value)
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({card: {front: cardFront, back: cardBack, deck_id: cardDeck}})
+    }
+  
+    fetch("http://localhost:3000/cards", options)
+    .then(resp => resp.json())
+    .then(card => {
+      const newCard = new Card(card)
+      newCard.deck.cards.push(newCard)
+      newCard.deck.showDetail()
+    })
+  }
+
+
 }
 
 
