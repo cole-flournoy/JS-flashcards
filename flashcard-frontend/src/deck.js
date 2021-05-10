@@ -32,48 +32,40 @@ class Deck {
   }
 
   static newForm(div, group){
-    const form = document.createElement('form')
-    
-    const input = document.createElement('input')
-    input.setAttribute('type', 'text')
-    input.setAttribute('id', 'deckName')
-    input.setAttribute('placeholder', 'New Deck')
-  
-    // const groupLabel = document.createElement('label')
-    // groupLabel.setAttribute('value', 'Group: ')
-    
-    // const group = document.createElement('select')
-    // const options = 
-    // for (let option of options)
-    // group.append
-    
-    const submit = document.createElement('input')
-    submit.setAttribute('type', 'submit')
-    submit.setAttribute('value', 'Submit')
-  
-    form.append(input, submit)
-    div.append(form)
-  
-    submit.addEventListener('click', Deck.createDeck)
+    let form = `
+      <form id="newDeck">
+        <input id="deckName" type="text" placeholder="New ${group.name} Deck">
+        <input id="group" type="hidden" value=${group.id}>
+        <input type="submit" value="Submit">
+      </form>
+    `
+    div.innerHTML += form 
+    form = document.getElementById('newDeck')
+    form.addEventListener('submit', Deck.createDeck)
   }
 
   static createDeck(e){
     e.preventDefault()
     const userInput = document.getElementById('deckName').value
+    const group = parseInt(document.getElementById('group').value)
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({deck: {name: userInput}})
+      body: JSON.stringify({deck: {name: userInput, group_id: group}})
     }
   
-    fetch("http://localhost:3000/groups", options)
+    fetch("http://localhost:3000/decks", options)
     .then(resp => resp.json())
-    .then(Deck.fetchDecks)
-    // instantiate new deck
-    e.target.parentElement.reset()
+    .then(deck => {
+      debugger
+      new Deck(deck)
+      // redirect to add cards to the new deck
+    })
+    const form = document.getElementById('newDeck')
+    form.reset()
   }
 }
 
