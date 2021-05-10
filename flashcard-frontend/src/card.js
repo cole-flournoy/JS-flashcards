@@ -1,9 +1,12 @@
 class Card {
+  static all = []
+  
   constructor(card){
     this.id = card.id
     this.front = card.front
     this.back = card.back
     this.deck = card.deck
+    Card.all.push(this)
   }
 
   static fetchCards(){
@@ -13,7 +16,7 @@ class Card {
       for (let card of cards){
         let newCard = new Card(card)
       }
-      Card.appendCards
+      Card.appendCards(cards)
     })
   }
 
