@@ -9,7 +9,12 @@ class Card {
   static fetchCards(){
     fetch("http://localhost:3000/cards")
     .then(resp => resp.json())
-    .then(Card.appendCards)
+    .then(cards => {
+      for (let card of cards){
+        let newCard = new Card(card)
+      }
+      Card.appendCards
+    })
   }
 
   static appendCards(cards){
@@ -17,7 +22,7 @@ class Card {
       console.log(card)
     }
   }
-  
+
 }
 
 
