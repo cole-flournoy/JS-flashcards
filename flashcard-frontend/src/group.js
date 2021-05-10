@@ -1,8 +1,11 @@
 class Group {
+  static all = []
+  
   constructor(group){
     this.id = group.id
     this.name = group.name
     this.decks = group.decks
+    Group.all.push(this)
   }
 
   static fetchGroups(){
@@ -12,7 +15,7 @@ class Group {
       for (let group of groups){
         let newGroup = new Group(group)
       }
-      Group.appendGroups
+      Group.appendGroups(groups)
     })
   }
 

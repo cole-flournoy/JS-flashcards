@@ -13,7 +13,7 @@ class Deck {
       for (let deck of decks){
         let newDeck = new Deck(deck)
       }
-      Deck.appendDecks
+      Deck.appendDecks(decks)
     })
   }
 
