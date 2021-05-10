@@ -5,7 +5,7 @@ class Card {
     this.id = card.id
     this.front = card.front
     this.back = card.back
-    this.deck = card.deck
+    this.deck = Deck.all.find(deck => deck.id === card.deck_id)
     Card.all.push(this)
   }
 

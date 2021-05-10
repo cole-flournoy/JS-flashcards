@@ -4,8 +4,8 @@ class Group {
   constructor(group){
     this.id = group.id
     this.name = group.name
-    this.decks = group.decks
     Group.all.push(this)
+    this.decks = group.decks.map(deck => new Deck(deck))
   }
 
   static fetchGroups(){

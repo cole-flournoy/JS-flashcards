@@ -4,23 +4,23 @@ class Deck {
   constructor(deck){
     this.id = deck.id
     this.name = deck.name
-    this.group = deck.group
-    this.cards = deck.cards
+    this.group = Group.all.find(group => group.id === deck.group_id)
     Deck.all.push(this)
+    this.cards = deck.cards.map(card => new Card(card))
   }
 
-  static fetchDecks(){
-    fetch("http://localhost:3000/decks")
-    .then(resp => resp.json())
-    .then(decks => {
-      for (let deck of decks){
-        let newDeck = new Deck(deck)
-        newDeck.appendDeck()
-      }
-    })
-    const deckDiv = document.getElementById('indexContainer')
-    deckDiv.innerText = "All My Decks!"
-  }
+  // static fetchDecks(){
+  //   fetch("http://localhost:3000/decks")
+  //   .then(resp => resp.json())
+  //   .then(decks => {
+  //     for (let deck of decks){
+  //       let newDeck = new Deck(deck)
+  //       // newDeck.appendDeck()
+  //     }
+  //   })
+  //   // const deckDiv = document.getElementById('indexContainer')
+  //   // deckDiv.innerText = "All My Decks!"
+  // }
 
   appendDeck(){
     const deckDiv = document.getElementById('indexContainer')
@@ -30,7 +30,8 @@ class Deck {
     li.addEventListener('click', this.showDetail.bind(this))
   }
 
-  static appendDecks(decks){
+  static appendDecks(){
+    const decks = Deck.all
     const deckDiv = document.getElementById('indexContainer')
     deckDiv.innerText = "All My Decks!"
     for (let deck of decks){
