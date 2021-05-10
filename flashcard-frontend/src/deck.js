@@ -15,19 +15,26 @@ class Deck {
     .then(decks => {
       for (let deck of decks){
         let newDeck = new Deck(deck)
+        newDeck.appendDeck()
       }
-      Deck.appendDecks(Deck.all)
     })
+    const deckDiv = document.getElementById('indexContainer')
+    deckDiv.innerText = "All My Decks!"
+  }
+
+  appendDeck(){
+    const deckDiv = document.getElementById('indexContainer')
+    const li = document.createElement('li')
+    li.innerText = `${this.name} (${this.group.name})`
+    deckDiv.append(li)
+    li.addEventListener('click', this.showDetail.bind(this))
   }
 
   static appendDecks(decks){
     const deckDiv = document.getElementById('indexContainer')
     deckDiv.innerText = "All My Decks!"
     for (let deck of decks){
-      const li = document.createElement('li')
-      li.innerText = `${deck.name} (${deck.group.name})`
-      deckDiv.append(li)
-      li.addEventListener('click', deck.showDetail.bind(deck))
+      deck.appendDeck()
     }
   }
 
