@@ -51,7 +51,7 @@ class Group {
     form.append(input, submit)
     div.append(form)
   
-    submit.addEventListener('click', Group.createGroup)
+    form.addEventListener('submit', Group.createGroup)
   }
   
   static createGroup(e){
@@ -69,10 +69,10 @@ class Group {
     fetch("http://localhost:3000/groups", options)
     .then(resp => resp.json())
     .then(group => {
-      const newGroup = new Group(group)
-      newGroup.appendGroup()
+      new Group(group)
+      Group.appendGroups()
     })
-    e.target.parentElement.reset()
+    e.target.reset()
   }
 
   showDetail(){
