@@ -16,7 +16,7 @@ class Deck {
       for (let deck of decks){
         let newDeck = new Deck(deck)
       }
-      Deck.appendDecks(decks)
+      Deck.appendDecks(Deck.all)
     })
   }
 
@@ -27,6 +27,7 @@ class Deck {
       const li = document.createElement('li')
       li.innerText = `${deck.name} (${deck.group.name})`
       deckDiv.append(li)
+      li.addEventListener('click', deck.showDetail.bind(deck))
     }
   }
 
@@ -59,12 +60,22 @@ class Deck {
     fetch("http://localhost:3000/decks", options)
     .then(resp => resp.json())
     .then(deck => {
-      debugger
       new Deck(deck)
       // redirect to add cards to the new deck
     })
     const form = document.getElementById('newDeck')
     form.reset()
+  }
+
+  showDetail(){
+    const deckDiv = document.getElementById('indexContainer')
+    deckDiv.innerText = `${this.name} Deck - (${this.group.name})`
+    for (let card of this.cards){
+      const li = document.createElement('li')
+      li.innerText = `Front: ${card.front} - Back: ${card.back}`
+      deckDiv.append(li)
+    }
+    // render new card form
   }
 }
 
