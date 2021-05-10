@@ -21,8 +21,6 @@ class Deck {
   }
 
   static appendDecks(decks){
-    const detailDiv = document.getElementById('detailContainer')
-    detailDiv.innerText = ''
     const deckDiv = document.getElementById('indexContainer')
     deckDiv.innerText = "All My Decks!"
     for (let deck of decks){
@@ -30,11 +28,10 @@ class Deck {
       li.innerText = `${deck.name} (${deck.group.name})`
       deckDiv.append(li)
     }
+    Deck.newForm(deckDiv)
   }
 
-  static newForm(){
-    const formCont = document.getElementById('newFormContainer')
-    formCont.innerHTML = ''
+  static newForm(div){
     const form = document.createElement('form')
     
     const input = document.createElement('input')
@@ -55,7 +52,7 @@ class Deck {
     submit.setAttribute('value', 'Submit')
   
     form.append(input, submit)
-    formCont.append(form)
+    div.append(form)
   
     submit.addEventListener('click', Deck.createDeck)
   }
