@@ -9,7 +9,12 @@ class Deck {
   static fetchDecks(){
     fetch("http://localhost:3000/decks")
     .then(resp => resp.json())
-    .then(Deck.appendDecks)
+    .then(decks => {
+      for (let deck of decks){
+        let newDeck = new Deck(deck)
+      }
+      Deck.appendDecks
+    })
   }
 
   static appendDecks(decks){
@@ -67,7 +72,7 @@ class Deck {
     fetch("http://localhost:3000/groups", options)
     .then(resp => resp.json())
     .then(Deck.fetchDecks)
-  
+    // instantiate new deck
     e.target.parentElement.reset()
   }
 }
