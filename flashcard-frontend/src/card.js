@@ -16,7 +16,7 @@ class Card {
       for (let card of cards){
         let newCard = new Card(card)
       }
-      Card.appendCards(cards)
+      Card.appendCards(Card.all)
     })
   }
 
@@ -26,6 +26,17 @@ class Card {
     }
   }
 
+  static renderEditForm(div, card){
+    const form = `
+      <form id="editCard">
+        <input id="front" type="text" value="${card.front}">
+        <input id="back" type="text" value="${card.back}">
+        <input id="cardId" type="hidden" value=${card.id}>
+        <input type="submit" value="Submit">
+      </form>
+    ` 
+    div.innerHTML += form 
+  }
 }
 
 

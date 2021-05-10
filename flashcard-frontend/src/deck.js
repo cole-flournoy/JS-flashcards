@@ -79,7 +79,13 @@ class Deck {
     deckDiv.innerText = `${this.name} Deck - (${this.group.name})`
     for (let card of this.cards){
       const li = document.createElement('li')
-      li.innerText = `Front: ${card.front} - Back: ${card.back}`
+      const button = document.createElement('button')
+      button.setAttribute('id', 'cardEditButton')
+      button.innerText = "Edit"
+      li.innerText = `Front: ${card.front} - Back: ${card.back} `
+      li.append(button)
+      // debugger
+      button.addEventListener('click', () => Card.renderEditForm(deckDiv, card))
       deckDiv.append(li)
     }
     // render new card form
