@@ -31,13 +31,13 @@ class Deck {
     Deck.newForm(deckDiv)
   }
 
-  static newForm(div){
+  static newForm(div, group){
     const form = document.createElement('form')
     
     const input = document.createElement('input')
     input.setAttribute('type', 'text')
     input.setAttribute('id', 'deckName')
-    input.setAttribute('placeholder', 'Name of New Deck')
+    input.setAttribute('placeholder', 'New Deck')
   
     // const groupLabel = document.createElement('label')
     // groupLabel.setAttribute('value', 'Group: ')

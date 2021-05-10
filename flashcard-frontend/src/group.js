@@ -15,7 +15,7 @@ class Group {
       for (let group of groups){
         let newGroup = new Group(group)
       }
-      Group.appendGroups(groups)
+      Group.appendGroups(Group.all)
     })
   }
 
@@ -27,7 +27,7 @@ class Group {
       li.innerText = group.name
       li.id = group.id
       groupDiv.append(li)
-      // li.addEventListener('click', fetchGroup)
+      li.addEventListener('click', group.showDetail.bind(group))
     }
     Group.newForm(groupDiv)
   }
@@ -67,6 +67,17 @@ class Group {
     .then(Group.fetchGroups)
     // instantiate new group
     e.target.parentElement.reset()
+  }
+
+  showDetail(){
+    const groupDiv = document.getElementById('indexContainer')
+    groupDiv.innerText = `${this.name} Decks:`
+    for (let deck of this.decks){
+      const li = document.createElement('li')
+      li.innerText = `${deck.name}`
+      groupDiv.append(li)
+    }
+    Deck.newForm(groupDiv, this)
   }
 }
 
