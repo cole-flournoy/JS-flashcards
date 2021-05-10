@@ -32,7 +32,7 @@ class Card {
       <form id="editCard">
         <input id="front" type="text" value="${this.front}">
         <input id="back" type="text" value="${this.back}">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Edit">
       </form>
     ` 
     formDiv.innerHTML = form
@@ -59,6 +59,22 @@ class Card {
       existingCard.back = updatedCard.back
       existingCard.deck.showDetail()
     })
+  }
+
+  static renderCreateForm(deck){
+    const formDiv = document.getElementById('formDiv')
+    const form = `
+      <form id="createCard">
+        <input id="front" type="text" placeholder="Front">
+        <input id="back" type="text" placeholder="Back">
+        <input id="deck" type="hidden" value="${deck.id}">
+        <input type="submit" value="Create Flashcard">
+      </form>
+    ` 
+    formDiv.innerHTML = form
+    
+    // formDiv.children[0].addEventListener('submit', this.editCard.bind(this))
+
   }
 }
 

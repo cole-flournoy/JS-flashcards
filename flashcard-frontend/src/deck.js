@@ -79,7 +79,8 @@ class Deck {
     const formDiv = document.createElement('div')
     formDiv.setAttribute('id', 'formDiv')
     deckDiv.append(formDiv)
-    
+    Card.renderCreateForm(this)
+
     // render new card form
   }
 }
