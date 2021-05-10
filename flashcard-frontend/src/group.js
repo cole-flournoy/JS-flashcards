@@ -14,22 +14,21 @@ class Group {
     .then(groups => {
       for (let group of groups){
         let newGroup = new Group(group)
+        newGroup.appendGroup()
       }
-      Group.appendGroups(Group.all)
     })
-  }
-
-  static appendGroups(groups){
     const groupDiv = document.getElementById('indexContainer')
     groupDiv.innerText = "All My Groups!"
-    for (let group of groups){
-      const li = document.createElement('li')
-      li.innerText = group.name
-      li.id = group.id
-      groupDiv.append(li)
-      li.addEventListener('click', group.showDetail.bind(group))
-    }
     Group.newForm(groupDiv)
+  }
+
+  appendGroup(){
+    const groupDiv = document.getElementById('indexContainer')
+    const li = document.createElement('li')
+    li.innerText = this.name
+    li.id = this.id
+    groupDiv.append(li)
+    li.addEventListener('click', this.showDetail.bind(this))
   }
 
   static newForm(div){
@@ -80,24 +79,5 @@ class Group {
     Deck.newForm(groupDiv, this)
   }
 }
-
-
-// function fetchGroup(e){
-//   const groupId = e.target.id
-//   fetch(`http://localhost:3000/groups/${groupId}`)
-//   .then(resp => resp.json())
-//   .then(appendGroup)
-// }
-
-// function appendGroup(group){
-//   const detailDiv = document.getElementById('detailContainer')
-//   detailDiv.innerText = `${group.name} Decks!`
-//   for (let deck of group.decks){
-//     const li = document.createElement('li')
-//     li.innerText = deck.name
-//     detailDiv.append(li)
-//   }
-// }
-
 
 
