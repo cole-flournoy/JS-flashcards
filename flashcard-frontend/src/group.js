@@ -22,6 +22,14 @@ class Group {
     Group.newForm(groupDiv)
   }
 
+  static appendGroups(){
+    const groupDiv = document.getElementById('indexContainer')
+    groupDiv.innerText = "All My Groups!"
+    for (let group of Group.all){
+      group.appendGroup()
+    }
+  }
+
   appendGroup(){
     const groupDiv = document.getElementById('indexContainer')
     const li = document.createElement('li')
@@ -63,8 +71,10 @@ class Group {
   
     fetch("http://localhost:3000/groups", options)
     .then(resp => resp.json())
-    .then(Group.fetchGroups)
-    // instantiate new group
+    .then(group => {
+      const newGroup = new Group(group)
+      newGroup.appendGroup()
+    })
     e.target.parentElement.reset()
   }
 
