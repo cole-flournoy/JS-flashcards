@@ -29,24 +29,23 @@ class Group {
       groupDiv.append(li)
       // li.addEventListener('click', fetchGroup)
     }
+    Group.newForm(groupDiv)
   }
 
-  static newForm(){
-    const formCont = document.getElementById('newFormContainer')
-    formCont.innerHTML = ''
+  static newForm(div){
     const form = document.createElement('form')
     
     const input = document.createElement('input')
     input.setAttribute('type', 'text')
     input.setAttribute('id', 'groupName')
-    input.setAttribute('placeholder', 'Name of New Group')
+    input.setAttribute('placeholder', 'New Group')
     
     const submit = document.createElement('input')
     submit.setAttribute('type', 'submit')
     submit.setAttribute('value', 'Submit')
   
     form.append(input, submit)
-    formCont.append(form)
+    div.append(form)
   
     submit.addEventListener('click', Group.createGroup)
   }
