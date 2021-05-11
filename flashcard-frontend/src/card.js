@@ -9,23 +9,6 @@ class Card {
     Card.all.push(this)
   }
 
-  // static fetchCards(){
-  //   fetch("http://localhost:3000/cards")
-  //   .then(resp => resp.json())
-  //   .then(cards => {
-  //     for (let card of cards){
-  //       let newCard = new Card(card)
-  //     }
-  //     Card.appendCards(Card.all)
-  //   })
-  // }
-
-  // static appendCards(cards){
-  //   for (let card of cards){
-  //     console.log(card)
-  //   }
-  // }
-
   renderEditForm(div){
     const formDiv = document.getElementById('formDiv')
     const form = `

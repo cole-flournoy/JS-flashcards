@@ -18,12 +18,8 @@ class Deck {
     quizButton.setAttribute('id', 'quizDeckButton')
     quizButton.innerText = "Study"
     deckDiv.append(li, quizButton)
-    li.addEventListener('click', this.showDetail.bind(this))
     
-    // const quizSpan = document.createElement('span')
-
-    // quizSpan.append(quizButton)
-    // li.append(quizSpan)
+    li.addEventListener('click', this.showDetail.bind(this))
     quizButton.addEventListener('click', this.quiz.bind(this))
   }
 
