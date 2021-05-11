@@ -13,8 +13,18 @@ class Deck {
     const deckDiv = document.getElementById('indexContainer')
     const li = document.createElement('li')
     li.innerText = `${this.name} (${this.group.name})`
-    deckDiv.append(li)
+    
+    const quizButton = document.createElement('button')
+    quizButton.setAttribute('id', 'quizDeckButton')
+    quizButton.innerText = "Study"
+    deckDiv.append(li, quizButton)
     li.addEventListener('click', this.showDetail.bind(this))
+    
+    // const quizSpan = document.createElement('span')
+
+    // quizSpan.append(quizButton)
+    // li.append(quizSpan)
+    quizButton.addEventListener('click', this.quiz.bind(this))
   }
 
   static appendDecks(){
@@ -80,6 +90,10 @@ class Deck {
     formDiv.setAttribute('id', 'formDiv')
     deckDiv.append(formDiv)
     Card.renderCreateForm(this)
+  }
+
+  quiz(){
+    console.log("YOu clicked the right thing")
   }
 }
 
