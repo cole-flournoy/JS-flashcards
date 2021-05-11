@@ -89,7 +89,33 @@ class Deck {
   }
 
   quiz(){
-    console.log("YOu clicked the right thing")
+    const deckDiv = document.getElementById('indexContainer')
+    deckDiv.innerHTML = ''
+    const cardDiv = document.createElement('div')
+    cardDiv.setAttribute('id', 'flashcard')
+    deckDiv.append(cardDiv)
+    this.cards[0].quizDisplayCard(cardDiv) 
+    
+    let index = 0
+    document.addEventListener('keydown', e => {
+      if (e.key === "ArrowLeft"){
+        if (index - 1 < 0){
+          index = 0
+          this.cards[index].quizDisplayCard(cardDiv)
+        } else {
+          index -= 1
+          this.cards[index].quizDisplayCard(cardDiv)
+        }
+      }
+      if (e.key === "ArrowRight"){
+        if (index + 1 > this.cards.length - 1){
+          this.showDetail()
+        } else {
+          index += 1
+          this.cards[index].quizDisplayCard(cardDiv)
+        }
+      }
+    })
   }
 }
 

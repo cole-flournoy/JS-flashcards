@@ -82,6 +82,23 @@ class Card {
     })
   }
 
+  quizDisplayCard(div, side=this.front){
+    div.innerText = side
+    let button = document.createElement('button')
+    button.innerText = 'flip'
+    button.setAttribute('id', 'flip')
+    div.append(button)
+    button.addEventListener('click', this.flip.bind(this))
+  }
+
+  flip(){
+    const cardDiv = document.getElementById('flashcard')
+    if (cardDiv.innerText === this.front + "flip"){
+      this.quizDisplayCard(cardDiv, this.back)
+    } else {
+      this.quizDisplayCard(cardDiv, this.front)
+    }
+  }
 
 }
 

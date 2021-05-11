@@ -1,0 +1,11 @@
+#flashcard {
+  background-color: rgb(215, 197, 60);
+  height: 75px;
+  width: 75px;
+  border: 5px solid lightgray;
+  padding: 50px;
+  margin: auto;
+  font-family: "Monaco", Arial, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
