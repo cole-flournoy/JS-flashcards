@@ -61,8 +61,9 @@ class Deck {
     fetch("http://localhost:3000/decks", options)
     .then(resp => resp.json())
     .then(deck => {
-      new Deck(deck)
-      // redirect to add cards to the new deck
+      const newDeck = new Deck(deck)
+      newDeck.group.decks.push(newDeck)
+      newDeck.group.showDetail()
     })
     const form = document.getElementById('newDeck')
     form.reset()
