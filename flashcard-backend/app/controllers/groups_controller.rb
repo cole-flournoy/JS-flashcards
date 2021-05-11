@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
     render json: group
   end 
 
+  private
 
   def group_params
     params.require(:group).permit(:name)

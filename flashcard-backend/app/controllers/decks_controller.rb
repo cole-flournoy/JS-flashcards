@@ -8,7 +8,8 @@ class DecksController < ApplicationController
     render json: deck
   end
 
-
+  private
+   
   def deck_params
     params.require(:deck).permit(:name, :group_id)
   end 
