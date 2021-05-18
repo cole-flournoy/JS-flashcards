@@ -10,12 +10,19 @@ class Group {
 
   static fetchGroups(){
     fetch("http://localhost:3000/groups")
-    .then(resp => resp.json())
+    .then(resp => {
+      if (resp.ok){
+        return resp.json()
+      } else {
+        throw new Error(resp)
+      }
+    })
     .then(groups => {
       for (let group of groups){
         new Group(group)
       }
     })
+    .catch(error => alert(error))
   }
 
   static appendGroups(){
@@ -67,11 +74,18 @@ class Group {
     }
   
     fetch("http://localhost:3000/groups", options)
-    .then(resp => resp.json())
+    .then(resp => {
+      if (resp.ok){
+        return resp.json()
+      } else {
+        throw new Error(resp)
+      }
+    })
     .then(group => {
       new Group(group)
       Group.appendGroups()
     })
+    .catch(error => alert(error))
     e.target.reset()
   }
 

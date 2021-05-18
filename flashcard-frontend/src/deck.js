@@ -59,12 +59,19 @@ class Deck {
     }
   
     fetch("http://localhost:3000/decks", options)
-    .then(resp => resp.json())
+    .then(resp => {
+      if (resp.ok){
+        return resp.json()
+      } else {
+        throw new Error(resp)
+      }
+    })
     .then(deck => {
       const newDeck = new Deck(deck)
       newDeck.group.decks.push(newDeck)
       newDeck.group.showDetail()
     })
+    .catch(error => alert(error))
     const form = document.getElementById('newDeck')
     form.reset()
   }

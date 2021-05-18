@@ -35,13 +35,20 @@ class Card {
       body: JSON.stringify({card: {front: cardFront, back: cardBack}})
     }
     fetch(`http://localhost:3000/cards/${this.id}`, options)
-    .then(resp => resp.json())
+    .then(resp => {
+      if (resp.ok){
+        return resp.json()
+      } else {
+        throw new Error(resp)
+      }
+    })
     .then(updatedCard => {
       let existingCard = Card.all.find(card => card.id === updatedCard.id)
       existingCard.front = updatedCard.front
       existingCard.back = updatedCard.back
       existingCard.deck.showDetail()
     })
+    .catch(error => alert(error))
   }
 
   static renderCreateForm(deck){
@@ -74,12 +81,19 @@ class Card {
     }
   
     fetch("http://localhost:3000/cards", options)
-    .then(resp => resp.json())
+    .then(resp => {
+      if (resp.ok){
+        return resp.json()
+      } else {
+        throw new Error(resp)
+      }
+    })
     .then(card => {
       const newCard = new Card(card)
       newCard.deck.cards.push(newCard)
       newCard.deck.showDetail()
     })
+    .catch(error => alert(error))
   }
 
   quizDisplayCard(div, side=this.front){
