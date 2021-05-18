@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  resources :groups
-
+  resources :groups, only: [:index, :show, :create]
   
-  resources :decks
-
+  resources :decks, only: [:index, :create]
   
-  resources :cards
+  resources :cards, only: [index, :create, :update]
   
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
