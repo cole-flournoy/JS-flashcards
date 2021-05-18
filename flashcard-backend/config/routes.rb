@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :groups, only: [:index, :show, :create]
+  resources :groups, only: [:index, :create]
   
   resources :decks, only: [:index, :create]
   
