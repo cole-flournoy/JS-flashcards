@@ -129,6 +129,12 @@ class Deck {
       }
     })
   }
+
+  static mostCards(){
+    let allDecks = [...Deck.all]
+    allDecks.sort((a, b) => b.cards.length - a.cards.length)
+    allDecks[0].showDetail()
+  }
 }
 
 
