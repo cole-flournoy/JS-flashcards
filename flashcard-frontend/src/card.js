@@ -89,9 +89,13 @@ class Card {
       }
     })
     .then(card => {
-      const newCard = new Card(card)
-      newCard.deck.cards.push(newCard)
-      newCard.deck.showDetail()
+      if (card.id){
+        const newCard = new Card(card)
+        newCard.deck.cards.push(newCard)
+        newCard.deck.showDetail()
+      } else {
+        throw new Error(card.error.join("\n          "))
+      }
     })
     .catch(error => alert(error))
   }

@@ -4,8 +4,12 @@ class CardsController < ApplicationController
   end
 
   def create
-    card = Card.create(card_params)
-    render json: card
+    card = Card.new(card_params)
+    if card.save
+      render json: card
+    else 
+      render json: {error: card.errors.full_messages}
+    end
   end
 
   def update
