@@ -67,9 +67,13 @@ class Deck {
       }
     })
     .then(deck => {
-      const newDeck = new Deck(deck)
-      newDeck.group.decks.push(newDeck)
-      newDeck.group.showDetail()
+      if (deck.id){
+        const newDeck = new Deck(deck)
+        newDeck.group.decks.push(newDeck)
+        newDeck.group.showDetail()
+      } else {
+        throw new Error(deck.error)
+      }
     })
     .catch(error => alert(error))
     const form = document.getElementById('newDeck')

@@ -4,12 +4,16 @@ class DecksController < ApplicationController
   end 
 
   def create
-    deck = Deck.create(deck_params)
-    render json: deck
+    deck = Deck.new(deck_params)
+    if deck.save
+      render json: deck
+    else
+      render json: {error: deck.errors.full_messages}
+    end
   end
 
   private
-   
+
   def deck_params
     params.require(:deck).permit(:name, :group_id)
   end 
