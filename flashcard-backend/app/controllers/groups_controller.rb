@@ -3,10 +3,13 @@ class GroupsController < ApplicationController
     render json: Group.all
   end
 
-  def create
-    # check if saves 
-    group = Group.create(group_params)
-    render json: group
+  def create 
+    group = Group.new(group_params)
+    if group.save
+      render json: group
+    else
+      render json: {error: group.errors.full_messages}
+    end
   end 
 
   private

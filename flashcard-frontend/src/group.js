@@ -82,8 +82,12 @@ class Group {
       }
     })
     .then(group => {
-      new Group(group)
-      Group.appendGroups()
+      if (group.id){
+        new Group(group)
+        Group.appendGroups()
+      } else {
+        throw new Error (group.error)
+      }
     })
     .catch(error => alert(error))
     e.target.reset()
