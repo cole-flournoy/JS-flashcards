@@ -42,7 +42,7 @@ class Deck {
     `
     div.innerHTML += form 
     form = document.getElementById('newDeck')
-    form.addEventListener('submit', Deck.createDeck)
+    form.addEventListener('submit', this.createDeck)
   }
 
   static createDeck(e){

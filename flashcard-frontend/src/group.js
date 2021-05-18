@@ -51,7 +51,7 @@ class Group {
     form.append(input, submit)
     div.append(form)
   
-    form.addEventListener('submit', Group.createGroup)
+    form.addEventListener('submit', this.createGroup)
   }
   
   static createGroup(e){
