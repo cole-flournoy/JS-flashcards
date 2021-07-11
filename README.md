@@ -1,6 +1,8 @@
 # README
 
-Welcome! This project is an application to create, update, organize, and study flashcards. It's a combination of of a Rails API backend and a Javascript frontend. 
+Welcome! This project is an application to create, update, organize, and study flashcards. It's a combination of a Rails API backend and a Javascript frontend. 
+
+
 
 ## Installation/Usage
 
