@@ -4,6 +4,9 @@ Welcome! This project is an application to create, update, organize, and study f
 
 To see a video demo of the basic features, click [here](https://youtu.be/rzQyqAvu2GU)
 
+<img src="images/flashcard_front.png" width="600">
+<img src="images/flashcard_back.png" width="600">
+
 ## Installation/Usage
 
 Fairly straightforward this time around:
