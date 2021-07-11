@@ -2,7 +2,7 @@
 
 Welcome! This project is an application to create, update, organize, and study flashcards. It's a combination of a Rails API backend and a Javascript frontend. 
 
-
+To see a video demo of the basic features, click [here](https://youtu.be/rzQyqAvu2GU)
 
 ## Installation/Usage
 
