@@ -106,6 +106,9 @@ class Deck {
     const cardDiv = document.createElement('div')
     cardDiv.setAttribute('id', 'flashcard')
     deckDiv.append(cardDiv)
+    const instructions = document.createElement('h2')
+    instructions.innerText = "Use left and right arrows to navigate between cards"
+    deckDiv.append(instructions)
     this.cards[0].quizDisplayCard(cardDiv) 
     
     let index = 0
